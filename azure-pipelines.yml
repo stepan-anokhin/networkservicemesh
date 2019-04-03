@@ -111,6 +111,7 @@ jobs:
       container: linux
       dependsOn:
         - aks-integration-tests
+      condition: always() # destroy AKS cluster even if the integration test job failed
       steps:
         - script: |
             pwd
