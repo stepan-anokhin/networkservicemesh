@@ -91,7 +91,7 @@ jobs:
     container: linux
     dependsOn:
       - build_nsmd
-      - build_nsmd-k8s
+      - build_nsmd_k8s
       - build_nsmdp
       - build_crossconnect_monitor
       - build_icmp_responder_nse
