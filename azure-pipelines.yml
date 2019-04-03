@@ -1,4 +1,4 @@
-name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)_$(Rev:.r)
+
 pool:
   vmImage: 'ubuntu-16.04'
 resources:
