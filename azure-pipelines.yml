@@ -2,15 +2,15 @@ name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)
 
 resources:
   containers:
-    - container: linux
-      image: ubuntu:16.04
+    - container: build_container
+      image: circleci/golang # is there a better alternative?
 
 trigger:
   - master
 
 jobs:
   - job: build_nsmd
-    container: linux
+    container: build_container
     steps:
       - script: |
           export COMMIT="$(echo $(Build.SourceVersion) | cut -c 1-8)"
@@ -18,79 +18,79 @@ jobs:
           echo "Commit = $COMMIT"
           make docker-nsmd-build
 #  - job: build_nsmd_k8s
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_admission_webhook
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_crossconnect_monitor
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_nsmdp
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_icmp_responder_nse
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_vppagent_icmp_responder_nse
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_vppagent_nsc
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_nsc
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_vppagent_dataplane
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_vppagent_dataplane_dev
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: build_vppagent_firewall_nse
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: aks_deploy
-#    container: linux
+#    container: build_container
 #    steps:
 #      - script: |
 #          pwd
 #          ls -la
 #  - job: aks_integration_tests
-#    container: linux
+#    container: build_container
 #    dependsOn:
 #      - build_nsmd
 #      - build_nsmd_k8s
@@ -107,7 +107,7 @@ jobs:
 #          pwd
 #          ls -la
 #  - job: aks_destroy
-#    container: linux
+#    container: build_container
 #    dependsOn:
 #      - aks_integration_tests
 #    condition: always() # destroy AKS cluster even if the integration test job failed
