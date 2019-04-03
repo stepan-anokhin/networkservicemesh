@@ -1,4 +1,4 @@
-
+name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)_$(Rev:.r)
 
 resources:
   containers:
@@ -9,11 +9,113 @@ trigger:
   - master
 
 jobs:
-  - job: build_nsmd
-    pool:
-      vmImage: 'ubuntu-16.04'
+  - job: build-nsmd
     container: linux
     steps:
       - script: |
           pwd
           ls -la
+  - job: build-nsmd-k8s
+    container: linux
+    steps:
+      - script: |
+          pwd
+          ls -la
+  - job: build-admission-webhook
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-crossconnect-monitor
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-nsmdp
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-icmp-responder-nse
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-vppagent-icmp-responder-nse
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-vppagent-icmp-responder-nse
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-vppagent-nsc
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-nsc
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-vppagent-dataplane
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-vppagent-dataplane-dev
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: build-vppagent-firewall-nse
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: aks-deploy
+      container: linux
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: aks-integration-tests
+      container: linux
+      dependsOn:
+        - build-nsmd
+        - build-nsmd-k8s
+        - build-nsmdp
+        - build-crossconnect-monitor
+        - build-icmp-responder-nse
+        - build-vppagent-icmp-responder-nse
+        - build-vppagent-nsc
+        - build-nsc
+        - build-vppagent-firewall-nse
+        - aks-deploy
+      steps:
+        - script: |
+            pwd
+            ls -la
+  - job: aks-destroy
+      container: linux
+      dependsOn:
+        - aks-integration-tests
+      condition: always() # destroy AKS cluster even if the integration test job failed
+      steps:
+        - script: |
+            pwd
+            ls -la
