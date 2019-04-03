@@ -5,6 +5,10 @@ resources:
   containers:
     - container: linux
       image: ubuntu:16.04
+
+trigger:
+  - *
+
 jobs:
   - job: build-nsmd
     container: linux
