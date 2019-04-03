@@ -13,7 +13,7 @@ jobs:
     container: linux
     steps:
       - script: |
-          export COMMIT="${$(Build.SourceVersion):8:8}"
+          export COMMIT="$(echo $(Build.SourceVersion) | cut -c 1-8)"
           export TAG="${COMMIT}"
           echo "Commit = $COMMIT"
           make docker-nsmd-build
