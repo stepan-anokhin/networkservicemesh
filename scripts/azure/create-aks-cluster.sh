@@ -4,7 +4,7 @@ export AZURE_RESOURCE_GROUP=$1
 export AZURE_CLUSTER_NAME=$2
 export AZURE_CREDENTIALS_PATH=$3
 
-echo -n "Creating AKS cluster $AZURE_CLUSTER_NAME..."
+echo -n "Creating AKS cluster '$AZURE_CLUSTER_NAME'..."
 
 if (az aks show --resource-group "$AZURE_RESOURCE_GROUP" --name "$AZURE_CLUSTER_NAME" > /dev/null 2>&1); then
 	echo "already exists"
@@ -16,7 +16,8 @@ else
 		--node-count 2 \
 		--node-vm-size Standard_B2s \
 		--enable-addons monitoring \
-		--generate-ssh-keys && \
+		--generate-ssh-keys \
+		--no-wait && \
 	echo "done" || exit 1
 fi
 
