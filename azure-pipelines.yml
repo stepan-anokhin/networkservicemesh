@@ -17,7 +17,7 @@ jobs:
           ls -la
           echo "Commit = $COMMIT"
         env:
-          COMMIT: $(SourceVersion)
+          COMMIT: $(Build.SourceVersion)
 #  - job: build_nsmd_k8s
 #    container: linux
 #    steps:
