@@ -1,13 +1,10 @@
 name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)_$(Rev:.r)
-
 pool:
   vmImage: 'ubuntu-16.04'
-
 resources:
   containers:
     - container: linux
       image: ubuntu:16.04
-
 jobs:
   - job: build-nsmd
     container: linux
@@ -15,98 +12,84 @@ jobs:
       - script: |
           pwd
           ls -la
-
   - job: build-nsmd-k8s
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-
   - job: build-admission-webhook
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-crossconnect-monitor
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-nsmdp
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-icmp-responder-nse
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-vppagent-icmp-responder-nse
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-vppagent-icmp-responder-nse
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-vppagent-nsc
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-nsc
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-vppagent-dataplane
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-vppagent-dataplane-dev
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: build-vppagent-firewall-nse
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: aks-deploy
       container: linux
       steps:
         - script: |
             pwd
             ls -la
-
   - job: aks-integration-tests
       container: linux
       dependsOn:
@@ -124,7 +107,6 @@ jobs:
         - script: |
             pwd
             ls -la
-
   - job: aks-destroy
       container: linux
       dependsOn:
