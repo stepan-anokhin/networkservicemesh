@@ -13,11 +13,10 @@ jobs:
     container: linux
     steps:
       - script: |
-          pwd
-          ls -la
-          echo "Commit = ${COMMIT:8:8}"
-        env:
-          COMMIT: $(Build.SourceVersion)
+          export COMMIT="${$(Build.SourceVersion):8:8}"
+          export TAG="${COMMIT}"
+          echo "Commit = $COMMIT"
+          make docker-nsmd-build
 #  - job: build_nsmd_k8s
 #    container: linux
 #    steps:
