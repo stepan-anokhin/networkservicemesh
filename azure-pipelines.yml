@@ -15,101 +15,102 @@ jobs:
       - script: |
           pwd
           ls -la
-  - job: build_nsmd_k8s
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_admission_webhook
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_crossconnect_monitor
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_nsmdp
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_icmp_responder_nse
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_vppagent_icmp_responder_nse
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_vppagent_nsc
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_nsc
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_vppagent_dataplane
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_vppagent_dataplane_dev
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: build_vppagent_firewall_nse
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: aks_deploy
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: aks_integration_tests
-    container: linux
-    dependsOn:
-      - build_nsmd
-      - build_nsmd_k8s
-      - build_nsmdp
-      - build_crossconnect_monitor
-      - build_icmp_responder_nse
-      - build_vppagent_icmp_responder_nse
-      - build_vppagent_nsc
-      - build_nsc
-      - build_vppagent_firewall_nse
-      - aks_deploy
-    steps:
-      - script: |
-          pwd
-          ls -la
-  - job: aks_destroy
-    container: linux
-    dependsOn:
-      - aks_integration_tests
-    condition: always() # destroy AKS cluster even if the integration test job failed
-    steps:
-      - script: |
-          pwd
-          ls -la
+          echo "${SourceVersion:8:8}"
+#  - job: build_nsmd_k8s
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_admission_webhook
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_crossconnect_monitor
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_nsmdp
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_icmp_responder_nse
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_vppagent_icmp_responder_nse
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_vppagent_nsc
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_nsc
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_vppagent_dataplane
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_vppagent_dataplane_dev
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: build_vppagent_firewall_nse
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: aks_deploy
+#    container: linux
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: aks_integration_tests
+#    container: linux
+#    dependsOn:
+#      - build_nsmd
+#      - build_nsmd_k8s
+#      - build_nsmdp
+#      - build_crossconnect_monitor
+#      - build_icmp_responder_nse
+#      - build_vppagent_icmp_responder_nse
+#      - build_vppagent_nsc
+#      - build_nsc
+#      - build_vppagent_firewall_nse
+#      - aks_deploy
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
+#  - job: aks_destroy
+#    container: linux
+#    dependsOn:
+#      - aks_integration_tests
+#    condition: always() # destroy AKS cluster even if the integration test job failed
+#    steps:
+#      - script: |
+#          pwd
+#          ls -la
