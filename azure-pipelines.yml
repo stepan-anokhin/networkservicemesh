@@ -27,93 +27,93 @@ jobs:
       - script: |
           pwd
           ls -la
-  - job: build-crossconnect-monitor
+  - job: build_crossconnect_monitor
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-nsmdp
+  - job: build_nsmdp
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-icmp-responder-nse
+  - job: build_icmp_responder_nse
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-vppagent-icmp-responder-nse
+  - job: build_vppagent_icmp_responder_nse
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-vppagent-icmp-responder-nse
+  - job: build_vppagent_icmp_responder_nse
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-vppagent-nsc
+  - job: build_vppagent_nsc
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-nsc
+  - job: build_nsc
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-vppagent-dataplane
+  - job: build_vppagent_dataplane
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-vppagent-dataplane-dev
+  - job: build_vppagent_dataplane_dev
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: build-vppagent-firewall-nse
+  - job: build_vppagent_firewall_nse
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: aks-deploy
+  - job: aks_deploy
     container: linux
     steps:
       - script: |
           pwd
           ls -la
-  - job: aks-integration-tests
+  - job: aks_integration_tests
     container: linux
     dependsOn:
-      - build-nsmd
-      - build-nsmd-k8s
-      - build-nsmdp
-      - build-crossconnect-monitor
-      - build-icmp-responder-nse
-      - build-vppagent-icmp-responder-nse
-      - build-vppagent-nsc
-      - build-nsc
-      - build-vppagent-firewall-nse
-      - aks-deploy
+      - build_nsmd
+      - build_nsmd-k8s
+      - build_nsmdp
+      - build_crossconnect_monitor
+      - build_icmp_responder_nse
+      - build_vppagent_icmp_responder_nse
+      - build_vppagent_nsc
+      - build_nsc
+      - build_vppagent_firewall_nse
+      - aks_deploy
     steps:
       - script: |
           pwd
           ls -la
-  - job: aks-destroy
+  - job: aks_destroy
     container: linux
     dependsOn:
-      - aks-integration-tests
+      - aks_integration_tests
     condition: always() # destroy AKS cluster even if the integration test job failed
     steps:
       - script: |
