@@ -16,8 +16,8 @@ jobs:
           pwd
           ls -la
           echo "Commit = $COMMIT"
-    env:
-      COMMIT: $(SourceVersion)
+        env:
+          COMMIT: $(SourceVersion)
 #  - job: build_nsmd_k8s
 #    container: linux
 #    steps:
