@@ -15,7 +15,7 @@ jobs:
       - script: |
           pwd
           ls -la
-          echo "Commit = $COMMIT"
+          echo "Commit = ${COMMIT:8:8}"
         env:
           COMMIT: $(Build.SourceVersion)
 #  - job: build_nsmd_k8s
