@@ -51,12 +51,6 @@ jobs:
       - script: |
           pwd
           ls -la
-  - job: build_vppagent_icmp_responder_nse
-    container: linux
-    steps:
-      - script: |
-          pwd
-          ls -la
   - job: build_vppagent_nsc
     container: linux
     steps:
