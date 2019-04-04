@@ -3,7 +3,7 @@ name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)
 resources:
   containers:
     - container: build_container
-      image: buildpack-deps:16.04
+      image: circleci/golang
 
 trigger:
   - master
@@ -16,7 +16,6 @@ jobs:
           export COMMIT="$(echo $(Build.SourceVersion) | cut -c 1-8)"
           export TAG="${COMMIT}"
           echo "Commit = $COMMIT"
-          make docker-nsmd-build
 #  - job: build_nsmd_k8s
 #    container: build_container
 #    steps:
