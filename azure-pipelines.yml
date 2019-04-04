@@ -3,7 +3,7 @@ name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)
 resources:
   containers:
     - container: build_container
-      image: circleci/golang # is there a better alternative?
+      image: ubuntu:16.04
 
 trigger:
   - master
@@ -13,6 +13,7 @@ jobs:
     container: build_container
     steps:
       - script: |
+          apt-get udpate && apt-get install make -y
           export COMMIT="$(echo $(Build.SourceVersion) | cut -c 1-8)"
           export TAG="${COMMIT}"
           echo "Commit = $COMMIT"
