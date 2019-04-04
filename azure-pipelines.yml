@@ -13,7 +13,7 @@ jobs:
     container: build_container
     steps:
       - script: |
-          apt-get udpate && apt-get install make -y
+          apt-get update && apt-get install make -y
           export COMMIT="$(echo $(Build.SourceVersion) | cut -c 1-8)"
           export TAG="${COMMIT}"
           echo "Commit = $COMMIT"
