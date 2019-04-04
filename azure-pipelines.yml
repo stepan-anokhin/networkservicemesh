@@ -3,7 +3,7 @@ name: $(TeamProject)_$(BuildDefinitionName)_$(SourceBranchName)_$(Date:yyyyMMdd)
 resources:
   containers:
     - container: build_container
-      image: ubuntu:16.04
+      image: buildpack-deps:16.04
 
 trigger:
   - master
